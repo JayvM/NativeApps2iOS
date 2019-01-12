@@ -17,6 +17,7 @@
 		F05440BD21EA37F000F22C80 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440BC21EA37F000F22C80 /* Checklist.swift */; };
 		F05440BF21EA391700F22C80 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440BE21EA391700F22C80 /* Item.swift */; };
 		F05440C121EA406100F22C80 /* ChecklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440C021EA406100F22C80 /* ChecklistTableViewCell.swift */; };
+		F05440C521EA6A7200F22C80 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440C421EA6A7200F22C80 /* AccountTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		F05440BC21EA37F000F22C80 /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
 		F05440BE21EA391700F22C80 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F05440C021EA406100F22C80 /* ChecklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewCell.swift; sourceTree = "<group>"; };
+		F05440C421EA6A7200F22C80 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				F05440B621E8DB0D00F22C80 /* LoginViewController.swift */,
 				F05440BA21EA240A00F22C80 /* ChecklistsTableViewController.swift */,
+				F05440C421EA6A7200F22C80 /* AccountTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				F05440C121EA406100F22C80 /* ChecklistTableViewCell.swift in Sources */,
 				F05440BB21EA240A00F22C80 /* ChecklistsTableViewController.swift in Sources */,
 				F05440BF21EA391700F22C80 /* Item.swift in Sources */,
+				F05440C521EA6A7200F22C80 /* AccountTableViewController.swift in Sources */,
 				F05440B921E8DBF500F22C80 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
