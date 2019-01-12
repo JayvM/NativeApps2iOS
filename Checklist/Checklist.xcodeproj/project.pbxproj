@@ -13,6 +13,7 @@
 		F05440AC21E8D62600F22C80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F05440AA21E8D62600F22C80 /* LaunchScreen.storyboard */; };
 		F05440B721E8DB0D00F22C80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440B621E8DB0D00F22C80 /* LoginViewController.swift */; };
 		F05440B921E8DBF500F22C80 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440B821E8DBF500F22C80 /* Account.swift */; };
+		F05440BB21EA240A00F22C80 /* ChecklistsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440BA21EA240A00F22C80 /* ChecklistsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		F05440AD21E8D62600F22C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F05440B621E8DB0D00F22C80 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F05440B821E8DBF500F22C80 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		F05440BA21EA240A00F22C80 /* ChecklistsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				F05440B621E8DB0D00F22C80 /* LoginViewController.swift */,
+				F05440BA21EA240A00F22C80 /* ChecklistsTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			files = (
 				F05440B721E8DB0D00F22C80 /* LoginViewController.swift in Sources */,
 				F05440A221E8D62600F22C80 /* AppDelegate.swift in Sources */,
+				F05440BB21EA240A00F22C80 /* ChecklistsTableViewController.swift in Sources */,
 				F05440B921E8DBF500F22C80 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
