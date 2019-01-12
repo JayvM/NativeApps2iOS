@@ -18,13 +18,16 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginButton.isEnabled = false
+        emailTextField.text = Account.getTestAccount().email
+        passwordTextField.text = Account.getTestAccount().password
+        
+        updateLoginButton()
         errorLabel.text = ""
         
         if let accounts = Account.getAccounts() {
             self.accounts = accounts
         } else {
-            accounts.append(Account(name: "Test", email: "test@mail.com", password: "test"))
+            accounts.append(Account.getTestAccount())
         }
     }
     
@@ -36,20 +39,25 @@ class LoginViewController: UIViewController {
         if segue.identifier == "ChecklistsSegue" {
             let navigationController = segue.destination as? UINavigationController
             let checklistsTableViewController = navigationController?.viewControllers.first as! ChecklistsTableViewController
+            
             checklistsTableViewController.account = sender as? Account
         }
     }
     
     //Functions
     
-    //Actions
-    
-    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+    func updateLoginButton() {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         
         loginButton.isEnabled = !email.isEmpty && !password.isEmpty
         errorLabel.text = ""
+    }
+    
+    //Actions
+    
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        updateLoginButton()
     }
     
     
