@@ -11,6 +11,8 @@
 		F05440A721E8D62600F22C80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F05440A521E8D62600F22C80 /* Main.storyboard */; };
 		F05440A921E8D62600F22C80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05440A821E8D62600F22C80 /* Assets.xcassets */; };
 		F05440AC21E8D62600F22C80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F05440AA21E8D62600F22C80 /* LaunchScreen.storyboard */; };
+		F05440B721E8DB0D00F22C80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440B621E8DB0D00F22C80 /* LoginViewController.swift */; };
+		F05440B921E8DBF500F22C80 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440B821E8DBF500F22C80 /* Account.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		F05440A821E8D62600F22C80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F05440AB21E8D62600F22C80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F05440AD21E8D62600F22C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F05440B621E8DB0D00F22C80 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F05440B821E8DBF500F22C80 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 		F05440B321E8D69400F22C80 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F05440B621E8DB0D00F22C80 /* LoginViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -81,6 +86,7 @@
 		F05440B521E8D6C600F22C80 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F05440B821E8DBF500F22C80 /* Account.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,7 +162,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F05440B721E8DB0D00F22C80 /* LoginViewController.swift in Sources */,
 				F05440A221E8D62600F22C80 /* AppDelegate.swift in Sources */,
+				F05440B921E8DBF500F22C80 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
