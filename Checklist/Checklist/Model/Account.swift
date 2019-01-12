@@ -16,11 +16,11 @@ class Account: Codable {
 
     //Initializer
     
-    init(name: String, email: String, password: String, checklists: [Checklist]) {
+    init(name: String, email: String, password: String, checklists: [Checklist]?) {
         self.name = name
         self.email = email
         self.password = password
-        self.checklists = checklists
+        self.checklists = checklists ?? []
     }
     
     //Static methods
@@ -44,11 +44,16 @@ class Account: Codable {
     }
     
     static func getAccounts() -> [Account]? {
-        guard let accounts = try? Data(contentsOf: archiveURL) else {
+        guard let encodedAccounts = try? Data(contentsOf: archiveURL) else {
             return nil
         }
         
-        return try? PropertyListDecoder().decode(Array<Account>.self, from: accounts)
+        return try? PropertyListDecoder().decode(Array<Account>.self, from: encodedAccounts)
     }
     
+    static func saveAccount(_ accounts: [Account]) {
+        let encodedAccounts = try? PropertyListEncoder().encode(accounts)
+        
+        try? encodedAccounts?.write(to: archiveURL, options: .noFileProtection)
+    }
 }

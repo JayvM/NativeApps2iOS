@@ -75,4 +75,16 @@ class LoginViewController: UIViewController {
         errorLabel.text = "The E-mail or password is incorrect!"
     }
 
+    @IBAction func unwindToLoginViewController(segue: UIStoryboardSegue) {
+        guard segue.identifier == "SaveAccountUnwind" else {
+            return
+        }
+        
+        let accountTableViewController = segue.source as! AccountTableViewController
+        
+        if let account = accountTableViewController.account {
+            accounts.append(account)
+            Account.saveAccount(accounts)
+        }
+    }
 }
