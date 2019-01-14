@@ -26,11 +26,12 @@ class LoginViewController: UIViewController {
         updateLoginButton()
     }
     
+    /*
+     USED AS GUIDANCE
+     How to pass data from a view controller to a tableview controller through a navigation controller
+     https://stackoverflow.com/questions/25369412/swift-pass-data-through-navigation-controller
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        /*
-         Stack Overflow: Passing data from a view controller to a tableview controller through a navigation controller
-         https://stackoverflow.com/questions/25369412/swift-pass-data-through-navigation-controller
-         */
         if segue.identifier == "ChecklistsSegue" {
             let navigationController = segue.destination as? UINavigationController
             let checklistsTableViewController = navigationController?.viewControllers.first as! ChecklistsTableViewController

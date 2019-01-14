@@ -20,6 +20,11 @@ class ChecklistsTableViewController: UITableViewController {
         return section == 0 ? dataController.currentAccount.checklists.count : 0
     }
 
+    /*
+     USED AS GUIDANCE
+     How to use the map function
+     https://useyourloaf.com/blog/swift-guide-to-map-filter-reduce/
+     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistCell", for: indexPath) as! ChecklistTableViewCell
         
