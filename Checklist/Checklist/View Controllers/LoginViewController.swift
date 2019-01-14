@@ -8,6 +8,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var newAccountButton: UIButton!
     
     //Properties
     
@@ -19,25 +20,29 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         //Temporary
-        let account = dataController.getTestAccount()
-        //dataController.insertAccount(account)
-        emailTextField.text = account.email
-        passwordTextField.text = account.password
+        emailTextField.text = "jay@mail.com"
+        passwordTextField.text = "pw"
         
         updateLoginButton()
-        errorLabel.text = ""
     }
     
-    /*
-     Stack Overflow: Passing data from a view controller to a tableview controller through a navigation controller
-     https://stackoverflow.com/questions/25369412/swift-pass-data-through-navigation-controller
-    */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        /*
+         Stack Overflow: Passing data from a view controller to a tableview controller through a navigation controller
+         https://stackoverflow.com/questions/25369412/swift-pass-data-through-navigation-controller
+         */
         if segue.identifier == "ChecklistsSegue" {
             let navigationController = segue.destination as? UINavigationController
             let checklistsTableViewController = navigationController?.viewControllers.first as! ChecklistsTableViewController
             
             checklistsTableViewController.dataController = sender as? DataController
+        }
+        
+        if segue.identifier == "AccountSegue" {
+            let navigationController = segue.destination as? UINavigationController
+            let accountTableViewController = navigationController?.viewControllers.first as! AccountTableViewController
+            
+            accountTableViewController.dataController = sender as? DataController
         }
     }
     
@@ -59,11 +64,10 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        let accounts = dataController.accounts
-        let email = emailTextField.text
-        let password = passwordTextField.text
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
         
-        for account in accounts {
+        for account in dataController.accounts {
             if account.email == email && account.password == password {
                 dataController.currentAccount = account
                 performSegue(withIdentifier: "ChecklistsSegue", sender: dataController)
@@ -74,15 +78,10 @@ class LoginViewController: UIViewController {
         errorLabel.text = "The E-mail or password is incorrect!"
     }
 
+    @IBAction func newAccountButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "AccountSegue", sender: dataController)
+    }
+    
     @IBAction func unwindToLoginViewController(segue: UIStoryboardSegue) {
-        guard segue.identifier == "SaveAccountUnwind" else {
-            return
-        }
-        
-        let accountTableViewController = segue.source as! AccountTableViewController
-        
-        if let account = accountTableViewController.account {
-            dataController.insertAccount(account)
-        }
     }
 }

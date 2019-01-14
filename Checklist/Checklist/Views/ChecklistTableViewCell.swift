@@ -5,7 +5,7 @@ class ChecklistTableViewCell: UITableViewCell {
     //Outlets
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var accountNamesLabel: UILabel!
+    @IBOutlet weak var sharedWithLabel: UILabel!
     @IBOutlet weak var itemsCountLabel: UILabel!
     
     //Override functions
@@ -20,27 +20,23 @@ class ChecklistTableViewCell: UITableViewCell {
     
     //Functions
     
-    func set(checklist: Checklist) {
-        nameLabel.text = checklist.name
+    func set(checklist: Checklist, names: [String?]) {
+        var sharedWith = ""
         
-        var accounts = ""
-        let count = checklist.accounts.count
-
-        if count > 0 {
-            for index in 0...count - 1 {
-                if index < 1 {
-                    accounts += "Shared with "
-                }
-                
-                accounts += checklist.accounts[index].name
-                
-                if index < count - 1 {
-                    accounts += ", "
+        if !names.isEmpty {
+            sharedWith += "Shared with "
+            
+            for index in 0...names.count - 1 {
+                if let name = names[index] {
+                    sharedWith += name
+                    sharedWith += index < names.count - 2 ? ", " : ""
+                    sharedWith += index < names.count - 1 ? " & " : ""
                 }
             }
         }
         
-        accountNamesLabel.text = accounts
+        nameLabel.text = checklist.name
+        sharedWithLabel.text = sharedWith
         itemsCountLabel.text = "\(checklist.items.count) / \(checklist.items.count)"
     }
 }

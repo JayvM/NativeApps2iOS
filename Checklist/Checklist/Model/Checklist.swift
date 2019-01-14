@@ -6,11 +6,11 @@ class Checklist: Codable {
     
     var name: String
     var items: [Item]
-    var accounts: [Account]
+    var accounts: [Int]
     
     //Initializer
     
-    init(name: String, items: [Item]?, accounts: [Account]?) {
+    init(name: String, items: [Item]?, accounts: [Int]?) {
         self.name = name
         self.items = items ?? []
         self.accounts = accounts ?? []

@@ -23,7 +23,11 @@ class ChecklistsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistCell", for: indexPath) as! ChecklistTableViewCell
         
-        cell.set(checklist: dataController.currentAccount.checklists[indexPath.row])
+        let names = dataController.currentAccount.checklists[indexPath.row].accounts.map({(id: Int) -> String? in
+            return dataController.getAccount(id)?.name
+        })
+        
+        cell.set(checklist: dataController.currentAccount.checklists[indexPath.row], names: names)
         return cell
     }
 

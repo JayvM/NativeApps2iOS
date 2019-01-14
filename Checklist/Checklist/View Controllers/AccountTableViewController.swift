@@ -12,7 +12,7 @@ class AccountTableViewController: UITableViewController {
     
     //Properties
 
-    var account: Account!
+    var dataController: DataController!
     
     //Override functions
     
@@ -32,7 +32,7 @@ class AccountTableViewController: UITableViewController {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
     
-        account = Account(name: name, email: email, password: password, checklists: nil)
+        dataController.insertAccount(Account(id: dataController.getID(), name: name, email: email, password: password, checklists: nil))
     }
     
     //Functions

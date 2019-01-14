@@ -58,7 +58,8 @@
                                 <rect key="frame" x="112.5" y="605" width="150" height="30"/>
                                 <state key="normal" title="Create a new account"/>
                                 <connections>
-                                    <segue destination="Cdb-kj-FYy" kind="show" id="2Rg-1q-2Ru"/>
+                                    <action selector="newAccountButtonTapped:" destination="TD0-tO-DVf" eventType="touchUpInside" id="tDW-5B-Gau"/>
+                                    <segue destination="Cdb-kj-FYy" kind="show" identifier="AccountSegue" id="2Rg-1q-2Ru"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0g5-tm-ZFX">
@@ -86,6 +87,7 @@
                         <outlet property="emailTextField" destination="VIq-bV-Z3g" id="Tyz-fH-DyZ"/>
                         <outlet property="errorLabel" destination="0g5-tm-ZFX" id="Lbb-Nw-wsz"/>
                         <outlet property="loginButton" destination="f78-Qy-RuC" id="ogm-jY-BCq"/>
+                        <outlet property="newAccountButton" destination="Pqz-97-0cO" id="HkF-iA-qH3"/>
                         <outlet property="passwordTextField" destination="7r0-rZ-N72" id="N91-su-7Fz"/>
                         <segue destination="ZD0-X1-1zy" kind="show" identifier="ChecklistsSegue" id="gVV-QR-Zka"/>
                     </connections>
@@ -153,9 +155,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="accountNamesLabel" destination="k1s-Ca-X2N" id="YQG-ah-nTp"/>
-                                    <outlet property="itemsCountLabel" destination="sZk-SY-Zzp" id="64n-v6-yd3"/>
+                                    <outlet property="itemsCountLabel" destination="sZk-SY-Zzp" id="qSO-O5-su8"/>
                                     <outlet property="nameLabel" destination="Ny4-wd-v1h" id="DEw-Ro-ksY"/>
+                                    <outlet property="sharedWithLabel" destination="k1s-Ca-X2N" id="Z0B-ob-DIj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -250,7 +252,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     <connections>
                                                         <action selector="textFieldEditingChanged:" destination="wFU-hu-vuu" eventType="editingChanged" id="Xze-H3-qSk"/>
                                                     </connections>
@@ -275,7 +277,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     <connections>
                                                         <action selector="textFieldEditingChanged:" destination="wFU-hu-vuu" eventType="editingChanged" id="p4X-zo-APX"/>
                                                     </connections>
@@ -320,7 +322,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RSb-Dg-4AE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ivz-XS-47a" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1468" y="824"/>
+            <point key="canvasLocation" x="649" y="794"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jEa-vb-q4x">
@@ -336,7 +338,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c96-WV-4Ep" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="649" y="824"/>
+            <point key="canvasLocation" x="-138" y="794"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mkG-WD-rF9">
