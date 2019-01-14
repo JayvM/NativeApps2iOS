@@ -9,6 +9,7 @@ class AccountTableViewController: UITableViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
     //Properties
 
@@ -44,10 +45,13 @@ class AccountTableViewController: UITableViewController {
         let repeatPassword = repeatPasswordTextField.text ?? ""
         
         saveButton.isEnabled = false
+        errorLabel.text = ""
         
         if !name.isEmpty && !email.isEmpty && !password.isEmpty && !repeatPassword.isEmpty {
             if password == repeatPassword {
                 saveButton.isEnabled = true
+            } else {
+                errorLabel.text = "The two passwords are not the same!"
             }
         }
     }

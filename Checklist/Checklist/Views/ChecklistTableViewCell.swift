@@ -33,6 +33,8 @@ class ChecklistTableViewCell: UITableViewCell {
                     sharedWith += index < names.count - 1 ? " & " : ""
                 }
             }
+        } else {
+            sharedWithLabel.isHidden = true
         }
         
         nameLabel.text = checklist.name

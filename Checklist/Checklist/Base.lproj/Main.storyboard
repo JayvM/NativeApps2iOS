@@ -100,7 +100,7 @@
         <scene sceneID="wRK-bR-8F6">
             <objects>
                 <tableViewController id="hyh-fk-NPv" customClass="ChecklistsTableViewController" customModule="Checklist" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QLd-nb-Wbs">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QLd-nb-Wbs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -180,6 +180,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="68W-8o-igv">
+                            <rect key="frame" x="0.0" y="361.5" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="1" green="0.01164490638" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <sections>
                             <tableViewSection headerTitle="Name" id="MNj-oN-tsf">
                                 <cells>
@@ -313,6 +320,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emailTextField" destination="Te3-9B-pu2" id="onP-a3-fYA"/>
+                        <outlet property="errorLabel" destination="68W-8o-igv" id="Syt-Du-krp"/>
                         <outlet property="nameTextField" destination="yVC-AJ-kO0" id="jNm-LK-pwg"/>
                         <outlet property="passwordTextField" destination="yxc-ya-3uo" id="Yun-4V-RGL"/>
                         <outlet property="repeatPasswordTextField" destination="TGe-Gg-nVI" id="9de-Lw-7Yx"/>
