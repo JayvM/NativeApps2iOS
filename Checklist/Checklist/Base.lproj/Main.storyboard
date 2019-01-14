@@ -166,7 +166,13 @@
                             <outlet property="delegate" destination="hyh-fk-NPv" id="e8V-5M-uuv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My checklists" id="1oZ-GQ-RX1"/>
+                    <navigationItem key="navigationItem" title="My checklists" id="1oZ-GQ-RX1">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="wVX-kY-nDs">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="hyh-fk-NPv" id="gV8-uP-S8z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nr3-Xs-xVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

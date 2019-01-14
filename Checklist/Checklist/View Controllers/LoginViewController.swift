@@ -27,9 +27,8 @@ class LoginViewController: UIViewController {
     }
     
     /*
-     USED AS GUIDANCE
-     How to pass data from a view controller to a tableview controller through a navigation controller
-     https://stackoverflow.com/questions/25369412/swift-pass-data-through-navigation-controller
+     USED AS GUIDANCE: How to pass data from a view controller to a tableview controller through a navigation controller
+     SOURCE: https://stackoverflow.com/questions/25369412/swift-pass-data-through-navigation-controller
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ChecklistsSegue" {
