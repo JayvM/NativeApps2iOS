@@ -10,9 +10,9 @@ class Checklist: Codable {
     
     //Initializer
     
-    init(name: String, items: [Item], accounts: [Account]) {
+    init(name: String, items: [Item]?, accounts: [Account]?) {
         self.name = name
-        self.items = items
-        self.accounts = accounts
+        self.items = items ?? []
+        self.accounts = accounts ?? []
     }
 }

@@ -18,7 +18,6 @@ class AccountTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateSaveButton()
     }
     

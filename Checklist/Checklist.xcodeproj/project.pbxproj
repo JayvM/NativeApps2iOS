@@ -18,6 +18,7 @@
 		F05440BF21EA391700F22C80 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440BE21EA391700F22C80 /* Item.swift */; };
 		F05440C121EA406100F22C80 /* ChecklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440C021EA406100F22C80 /* ChecklistTableViewCell.swift */; };
 		F05440C521EA6A7200F22C80 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440C421EA6A7200F22C80 /* AccountTableViewController.swift */; };
+		F05440C821EB712B00F22C80 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440C721EB712B00F22C80 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F05440BE21EA391700F22C80 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F05440C021EA406100F22C80 /* ChecklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewCell.swift; sourceTree = "<group>"; };
 		F05440C421EA6A7200F22C80 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
+		F05440C721EB712B00F22C80 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				F05440B321E8D69400F22C80 /* View Controllers */,
 				F05440B421E8D6AC00F22C80 /* Views */,
 				F05440B521E8D6C600F22C80 /* Model */,
+				F05440C621EB710000F22C80 /* Controllers */,
 				F05440A821E8D62600F22C80 /* Assets.xcassets */,
 				F05440AA21E8D62600F22C80 /* LaunchScreen.storyboard */,
 				F05440AD21E8D62600F22C80 /* Info.plist */,
@@ -104,6 +107,14 @@
 				F05440BE21EA391700F22C80 /* Item.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F05440C621EB710000F22C80 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F05440C721EB712B00F22C80 /* DataController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +192,7 @@
 				F05440B721E8DB0D00F22C80 /* LoginViewController.swift in Sources */,
 				F05440A221E8D62600F22C80 /* AppDelegate.swift in Sources */,
 				F05440C121EA406100F22C80 /* ChecklistTableViewCell.swift in Sources */,
+				F05440C821EB712B00F22C80 /* DataController.swift in Sources */,
 				F05440BB21EA240A00F22C80 /* ChecklistsTableViewController.swift in Sources */,
 				F05440BF21EA391700F22C80 /* Item.swift in Sources */,
 				F05440C521EA6A7200F22C80 /* AccountTableViewController.swift in Sources */,

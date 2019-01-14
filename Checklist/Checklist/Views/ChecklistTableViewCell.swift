@@ -25,16 +25,22 @@ class ChecklistTableViewCell: UITableViewCell {
         
         var accounts = ""
         let count = checklist.accounts.count
-        
-        for index in 0...count - 1 {
-            accounts += checklist.accounts[index].name
-            
-            if index < count - 1 {
-                accounts += ", "
+
+        if count > 0 {
+            for index in 0...count - 1 {
+                if index < 1 {
+                    accounts += "Shared with "
+                }
+                
+                accounts += checklist.accounts[index].name
+                
+                if index < count - 1 {
+                    accounts += ", "
+                }
             }
         }
         
-        accountNamesLabel.text = "Shared with " + accounts
+        accountNamesLabel.text = accounts
         itemsCountLabel.text = "\(checklist.items.count) / \(checklist.items.count)"
     }
 }
