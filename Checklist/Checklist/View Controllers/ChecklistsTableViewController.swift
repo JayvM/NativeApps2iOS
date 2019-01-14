@@ -38,6 +38,7 @@ class ChecklistsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             dataController.currentAccount.checklists.remove(at: indexPath.row)
+            dataController.updateAccount(dataController.currentAccount)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
