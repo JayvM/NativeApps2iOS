@@ -71,7 +71,9 @@ class ChecklistsTableViewController: UITableViewController {
             })
         })
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        
+        alert.addAction(cancel)
         alert.addAction(save)
         save.isEnabled = false
         self.present(alert, animated: true)

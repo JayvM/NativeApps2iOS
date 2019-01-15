@@ -62,20 +62,12 @@
                                     <segue destination="Cdb-kj-FYy" kind="show" identifier="AccountSegue" id="2Rg-1q-2Ru"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0g5-tm-ZFX">
-                                <rect key="frame" x="172" y="394.5" width="31" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="1" green="0.01164490638" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eoJ-MC-6zB" firstAttribute="trailing" secondItem="WMD-Il-QIR" secondAttribute="trailing" constant="32" id="3cp-0B-88e"/>
-                            <constraint firstItem="0g5-tm-ZFX" firstAttribute="top" secondItem="WMD-Il-QIR" secondAttribute="bottom" id="9mX-ny-B4A"/>
                             <constraint firstItem="gs3-u2-cJk" firstAttribute="centerX" secondItem="8jd-zB-vDL" secondAttribute="centerX" id="GaE-gb-nz0"/>
                             <constraint firstItem="eoJ-MC-6zB" firstAttribute="bottom" secondItem="Pqz-97-0cO" secondAttribute="bottom" constant="32" id="IKh-BX-vAm"/>
-                            <constraint firstItem="0g5-tm-ZFX" firstAttribute="centerX" secondItem="8jd-zB-vDL" secondAttribute="centerX" id="Jng-pL-Deg"/>
                             <constraint firstItem="WMD-Il-QIR" firstAttribute="centerY" secondItem="8jd-zB-vDL" secondAttribute="centerY" id="K0R-T2-4eJ"/>
                             <constraint firstItem="gs3-u2-cJk" firstAttribute="top" secondItem="eoJ-MC-6zB" secondAttribute="top" constant="64" id="mvv-kh-Yg8"/>
                             <constraint firstItem="WMD-Il-QIR" firstAttribute="leading" secondItem="eoJ-MC-6zB" secondAttribute="leading" constant="32" id="orN-0m-ahG"/>
@@ -85,7 +77,6 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="VIq-bV-Z3g" id="Tyz-fH-DyZ"/>
-                        <outlet property="errorLabel" destination="0g5-tm-ZFX" id="Lbb-Nw-wsz"/>
                         <outlet property="loginButton" destination="f78-Qy-RuC" id="ogm-jY-BCq"/>
                         <outlet property="newAccountButton" destination="Pqz-97-0cO" id="HkF-iA-qH3"/>
                         <outlet property="passwordTextField" destination="7r0-rZ-N72" id="N91-su-7Fz"/>
@@ -186,13 +177,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="68W-8o-igv">
-                            <rect key="frame" x="0.0" y="361.5" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" red="1" green="0.01164490638" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <sections>
                             <tableViewSection headerTitle="Name" id="MNj-oN-tsf">
                                 <cells>
@@ -326,7 +310,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emailTextField" destination="Te3-9B-pu2" id="onP-a3-fYA"/>
-                        <outlet property="errorLabel" destination="68W-8o-igv" id="Syt-Du-krp"/>
                         <outlet property="nameTextField" destination="yVC-AJ-kO0" id="jNm-LK-pwg"/>
                         <outlet property="passwordTextField" destination="yxc-ya-3uo" id="Yun-4V-RGL"/>
                         <outlet property="repeatPasswordTextField" destination="TGe-Gg-nVI" id="9de-Lw-7Yx"/>

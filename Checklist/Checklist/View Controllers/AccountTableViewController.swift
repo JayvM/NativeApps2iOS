@@ -9,7 +9,6 @@ class AccountTableViewController: UITableViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
     
     //Properties
 
@@ -22,18 +21,41 @@ class AccountTableViewController: UITableViewController {
         updateSaveButton()
     }
     
+    /*
+     USED AS GUIDANCE: How to cancel a segue
+     SOURCE: https://stackoverflow.com/questions/28883050/swift-prepareforsegue-cancel
+     */
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "SaveAccountUnwind" {
+            let password = passwordTextField.text ?? ""
+            let repeatPassword = repeatPasswordTextField.text ?? ""
+            
+            if password != repeatPassword {
+                let alert = UIAlertController(title: "Hold on!", message: "The two passwords are not the same.", preferredStyle: .alert)
+                let understood = UIAlertAction(title: "Understood", style: .default, handler: nil)
+                
+                alert.addAction(understood)
+                self.present(alert, animated: true)
+                return false
+            }
+        }
+
+        return true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
         guard segue.identifier == "SaveAccountUnwind" else {
             return
         }
-        
+
+        let id = dataController.getID()
         let name = nameTextField.text ?? ""
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
-    
-        dataController.insertAccount(Account(id: dataController.getID(), name: name, email: email, password: password, checklists: nil))
+        
+        dataController.insertAccount(Account(id: id, name: name, email: email, password: password, checklists: nil))
     }
     
     //Functions
@@ -44,16 +66,7 @@ class AccountTableViewController: UITableViewController {
         let password = passwordTextField.text ?? ""
         let repeatPassword = repeatPasswordTextField.text ?? ""
         
-        saveButton.isEnabled = false
-        errorLabel.text = ""
-        
-        if !name.isEmpty && !email.isEmpty && !password.isEmpty && !repeatPassword.isEmpty {
-            if password == repeatPassword {
-                saveButton.isEnabled = true
-            } else {
-                errorLabel.text = "The two passwords are not the same!"
-            }
-        }
+        saveButton.isEnabled = !name.isEmpty && !email.isEmpty && !password.isEmpty && !repeatPassword.isEmpty
     }
     
     //Actions

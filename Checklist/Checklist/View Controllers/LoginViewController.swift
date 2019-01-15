@@ -7,7 +7,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var newAccountButton: UIButton!
     
     //Properties
@@ -53,7 +52,6 @@ class LoginViewController: UIViewController {
         let password = passwordTextField.text ?? ""
         
         loginButton.isEnabled = !email.isEmpty && !password.isEmpty
-        errorLabel.text = ""
     }
     
     //Actions
@@ -75,7 +73,11 @@ class LoginViewController: UIViewController {
             }
         }
         
-        errorLabel.text = "The E-mail or password is incorrect!"
+        let alert = UIAlertController(title: "Woops!", message: "The E-mail and/or password are incorrect.", preferredStyle: .alert)
+        let understood = UIAlertAction(title: "Let me try again", style: .default, handler: nil)
+        
+        alert.addAction(understood)
+        self.present(alert, animated: true)
     }
 
     @IBAction func newAccountButtonTapped(_ sender: UIButton) {
