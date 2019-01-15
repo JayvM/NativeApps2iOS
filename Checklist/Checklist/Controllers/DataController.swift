@@ -1,6 +1,11 @@
 import Foundation
 
 /*
+    Simulator device location
+    Finder: Ga > Ga naar map > ~/Library/Developer/CoreSimulator/Devices/
+ 
+    https://stackoverflow.com/questions/47950238/where-is-my-app-document-folder-in-xcode-9-simulator/47950275
+ 
     Resetting the simulator
     Simulator: Hardwarde > Erase all content and settings
 */

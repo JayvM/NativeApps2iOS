@@ -19,4 +19,14 @@ class Account: Codable {
         self.password = password
         self.checklists = checklists ?? []
     }
+    
+    //Methods
+    
+    func addChecklist(_ name: String) {
+        checklists.append(Checklist(name: name, items: nil, accounts: nil))
+    }
+    
+    func removeChecklist(_ index: Int) {
+        checklists.remove(at: index)
+    }
 }

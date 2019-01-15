@@ -41,7 +41,7 @@ class ChecklistsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            dataController.currentAccount.checklists.remove(at: indexPath.row)
+            dataController.currentAccount.removeChecklist(indexPath.row)
             dataController.updateAccount(dataController.currentAccount)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -61,7 +61,11 @@ class ChecklistsTableViewController: UITableViewController {
 
         let save = UIAlertAction(title: "Save", style: .default, handler: { action in
             if let name = alert.textFields?.first?.text {
-                print(name)
+                let newIndexPath = IndexPath(row: self.dataController.currentAccount.checklists.count, section: 0)
+                
+                self.dataController.currentAccount.addChecklist(name)
+                self.dataController.updateAccount(self.dataController.currentAccount)
+                self.tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         })
         
