@@ -46,6 +46,14 @@ class ChecklistsTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemsSegue" {
+            let checklistTableViewController = segue.destination as! ChecklistTableViewController
+            
+            checklistTableViewController.checklist = dataController.currentAccount.checklists[tableView.indexPathForSelectedRow!.row]
+        }
+    }
 
     //Actions
     
