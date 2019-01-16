@@ -6,7 +6,7 @@ class ItemsTableViewController: UITableViewController {
     
     var dataController: DataController!
     var checklist: Checklist!
-    
+  
     //Override functions
 
     override func viewDidLoad() {
