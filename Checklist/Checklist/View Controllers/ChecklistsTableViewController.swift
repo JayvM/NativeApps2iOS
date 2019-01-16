@@ -70,7 +70,7 @@ class ChecklistsTableViewController: UITableViewController {
             if let name = alert.textFields?.first?.text {
                 let newIndexPath = IndexPath(row: self.account.checklists.count, section: 0)
                 
-                self.account.addChecklist(name)
+                self.account.addChecklist(Checklist(name: name, items: nil, sharedAccounts: nil))
                 self.dataController.updateData()
                 self.tableView.insertRows(at: [newIndexPath], with: .automatic)
             }

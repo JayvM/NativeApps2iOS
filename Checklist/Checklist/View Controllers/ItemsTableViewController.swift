@@ -11,7 +11,7 @@ class ItemsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = checklist.name
+        self.navigationItem.title = checklist.name
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,29 +40,34 @@ class ItemsTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
+    //Actions
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    @IBAction func addButtonTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Add a new item", message: nil, preferredStyle: .alert)
+        
+        let save = UIAlertAction(title: "Save", style: .default, handler: { action in
+            if let name = alert.textFields?.first?.text {
+                let newIndexPath = IndexPath(row: self.checklist.items.count, section: 0)
+                
+                self.checklist.addItem(Item(name: name))
+                self.dataController.updateData()
+                self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        })
+        
+        alert.addTextField(configurationHandler: { textField in
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: {_ in
+                save.isEnabled = !(textField.text?.isEmpty ?? false)
+            })
+        })
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        
+        alert.addAction(cancel)
+        alert.addAction(save)
+        save.isEnabled = false
+        self.present(alert, animated: true)
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
