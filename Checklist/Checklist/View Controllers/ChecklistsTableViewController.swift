@@ -42,10 +42,10 @@ class ChecklistsTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ItemsSegue" {
-            let checklistTableViewController = segue.destination as! ChecklistTableViewController
+            let itemsTableViewController = segue.destination as! ItemsTableViewController
             
-            checklistTableViewController.dataController = dataController
-            checklistTableViewController.checklist = account.checklists[tableView.indexPathForSelectedRow!.row]
+            itemsTableViewController.dataController = dataController
+            itemsTableViewController.checklist = account.checklists[tableView.indexPathForSelectedRow!.row]
         }
     }
 

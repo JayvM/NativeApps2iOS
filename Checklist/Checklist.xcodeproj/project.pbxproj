@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F01DE56321EE722200034B58 /* ChecklistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01DE56221EE722200034B58 /* ChecklistTableViewController.swift */; };
+		F01DE56321EE722200034B58 /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01DE56221EE722200034B58 /* ItemsTableViewController.swift */; };
 		F05440A221E8D62600F22C80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440A121E8D62600F22C80 /* AppDelegate.swift */; };
 		F05440A721E8D62600F22C80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F05440A521E8D62600F22C80 /* Main.storyboard */; };
 		F05440A921E8D62600F22C80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05440A821E8D62600F22C80 /* Assets.xcassets */; };
@@ -20,10 +20,11 @@
 		F05440C121EA406100F22C80 /* ChecklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440C021EA406100F22C80 /* ChecklistTableViewCell.swift */; };
 		F05440C521EA6A7200F22C80 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440C421EA6A7200F22C80 /* AccountTableViewController.swift */; };
 		F05440C821EB712B00F22C80 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440C721EB712B00F22C80 /* DataController.swift */; };
+		F0F0956221EFA20A00CF244A /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F0956121EFA20A00CF244A /* ItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F01DE56221EE722200034B58 /* ChecklistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewController.swift; sourceTree = "<group>"; };
+		F01DE56221EE722200034B58 /* ItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
 		F054409E21E8D62600F22C80 /* Checklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checklist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F05440A121E8D62600F22C80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F05440A621E8D62600F22C80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 		F05440C021EA406100F22C80 /* ChecklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewCell.swift; sourceTree = "<group>"; };
 		F05440C421EA6A7200F22C80 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		F05440C721EB712B00F22C80 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		F0F0956121EFA20A00CF244A /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +91,7 @@
 				F05440B621E8DB0D00F22C80 /* LoginViewController.swift */,
 				F05440BA21EA240A00F22C80 /* ChecklistsTableViewController.swift */,
 				F05440C421EA6A7200F22C80 /* AccountTableViewController.swift */,
-				F01DE56221EE722200034B58 /* ChecklistTableViewController.swift */,
+				F01DE56221EE722200034B58 /* ItemsTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				F05440C021EA406100F22C80 /* ChecklistTableViewCell.swift */,
+				F0F0956121EFA20A00CF244A /* ItemTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,11 +198,12 @@
 				F05440B721E8DB0D00F22C80 /* LoginViewController.swift in Sources */,
 				F05440A221E8D62600F22C80 /* AppDelegate.swift in Sources */,
 				F05440C121EA406100F22C80 /* ChecklistTableViewCell.swift in Sources */,
-				F01DE56321EE722200034B58 /* ChecklistTableViewController.swift in Sources */,
+				F01DE56321EE722200034B58 /* ItemsTableViewController.swift in Sources */,
 				F05440C821EB712B00F22C80 /* DataController.swift in Sources */,
 				F05440BB21EA240A00F22C80 /* ChecklistsTableViewController.swift in Sources */,
 				F05440BF21EA391700F22C80 /* Item.swift in Sources */,
 				F05440C521EA6A7200F22C80 /* AccountTableViewController.swift in Sources */,
+				F0F0956221EFA20A00CF244A /* ItemTableViewCell.swift in Sources */,
 				F05440B921E8DBF500F22C80 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
