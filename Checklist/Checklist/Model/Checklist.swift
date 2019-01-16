@@ -18,6 +18,14 @@ class Checklist: Codable {
     
     //Methods
     
+    func addItem(_ item: Item) {
+        items.append(item)
+    }
+    
+    func removeItem(_ index: Int) {
+        items.remove(at: index)
+    }
+    
     func addSharedAccount(_ account: Account) {
         sharedAccounts.append(account)
     }
