@@ -12,14 +12,14 @@ import Foundation
 
 class DataController {
     
-    //Static properties
-    static var directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let directoryURL = directory.appendingPathComponent("data").appendingPathExtension("plist")
-    
     //Properties
 
     var accounts: [Account]
-    var currentAccount: Account!
+    
+    //Static properties
+    
+    static var directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let directoryURL = directory.appendingPathComponent("data").appendingPathExtension("plist")
     
     //Initializer
     
@@ -41,11 +41,11 @@ class DataController {
             let items1 = [item1, item2, item3]
             let items2 = [item4, item5, item6]
             
-            let accounts1 = [account1.id, account2.id]
+            let accounts1 = [account1, account2]
             
-            let checklist1 = Checklist(name: "Grocery store", items: items1, accounts: accounts1)
-            let checklist2 = Checklist(name: "Party", items: items2, accounts: nil)
-            let checklist3 = Checklist(name: "Vacation", items: nil, accounts: nil)
+            let checklist1 = Checklist(name: "Grocery store", items: items1, sharedAccounts: accounts1)
+            let checklist2 = Checklist(name: "Party", items: items2, sharedAccounts: nil)
+            let checklist3 = Checklist(name: "Vacation", items: nil, sharedAccounts: nil)
             
             let checklists1 = [checklist1, checklist2, checklist3]
             
@@ -64,7 +64,6 @@ class DataController {
         
         repeat {
             id = Int.random(in: 1...4)
-            print(id)
         } while (!doesIdAlreadyExist(id))
         
         return id
@@ -80,35 +79,27 @@ class DataController {
         return false
     }
     
-    func getAccount(_ id: Int) -> Account? {
-        for account in accounts {
-            if account.id == id {
-                return account
-            }
-        }
-        
-        return nil
+    func addAccount(_ account: Account) {
+        accounts.append(account)
     }
     
-    func writeAccounts() {
+    func updateData() {
         let encodedAccounts = try? PropertyListEncoder().encode(accounts)
         
         try? encodedAccounts?.write(to: DataController.directoryURL, options: .noFileProtection)
     }
     
-    func insertAccount(_ account: Account) {
-        accounts.append(account)
-        writeAccounts()
-    }
-    
-    func updateAccount(_ account: Account) {
-        for index in 0...accounts.count - 1 {
-            if accounts[index].email == account.email {
-                accounts[index] = account
-                break
+    func printData() {
+        for account in accounts {
+            print(account.name)
+            
+            for checklist in account.checklists {
+                print("\t" + checklist.name)
+                
+                for account in checklist.sharedAccounts {
+                    print("\t\t" + account.name)
+                }
             }
         }
-        
-        writeAccounts()
     }
 }

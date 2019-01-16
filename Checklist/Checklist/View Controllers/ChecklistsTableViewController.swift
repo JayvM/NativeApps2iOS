@@ -5,6 +5,7 @@ class ChecklistsTableViewController: UITableViewController {
     //Properties
     
     var dataController: DataController!
+    var account: Account!
     
     //Override functions
 
@@ -17,21 +18,13 @@ class ChecklistsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? dataController.currentAccount.checklists.count : 0
+        return section == 0 ? account.checklists.count : 0
     }
-
-    /*
-     USED AS GUIDANCE: How to use the map function
-     SOURCE: https://useyourloaf.com/blog/swift-guide-to-map-filter-reduce/
-     */
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistCell", for: indexPath) as! ChecklistTableViewCell
         
-        let names = dataController.currentAccount.checklists[indexPath.row].accounts.map({(id: Int) -> String? in
-            return dataController.getAccount(id)?.name
-        })
-        
-        cell.set(checklist: dataController.currentAccount.checklists[indexPath.row], names: names)
+        cell.set(checklist: account.checklists[indexPath.row])
         return cell
     }
 
@@ -41,8 +34,8 @@ class ChecklistsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            dataController.currentAccount.removeChecklist(indexPath.row)
-            dataController.updateAccount(dataController.currentAccount)
+            account.removeChecklist(indexPath.row)
+            dataController.updateData()
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -51,7 +44,8 @@ class ChecklistsTableViewController: UITableViewController {
         if segue.identifier == "ItemsSegue" {
             let checklistTableViewController = segue.destination as! ChecklistTableViewController
             
-            checklistTableViewController.checklist = dataController.currentAccount.checklists[tableView.indexPathForSelectedRow!.row]
+            checklistTableViewController.dataController = dataController
+            checklistTableViewController.checklist = account.checklists[tableView.indexPathForSelectedRow!.row]
         }
     }
 
@@ -69,10 +63,10 @@ class ChecklistsTableViewController: UITableViewController {
 
         let save = UIAlertAction(title: "Save", style: .default, handler: { action in
             if let name = alert.textFields?.first?.text {
-                let newIndexPath = IndexPath(row: self.dataController.currentAccount.checklists.count, section: 0)
+                let newIndexPath = IndexPath(row: self.account.checklists.count, section: 0)
                 
-                self.dataController.currentAccount.addChecklist(name)
-                self.dataController.updateAccount(self.dataController.currentAccount)
+                self.account.addChecklist(name)
+                self.dataController.updateData()
                 self.tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         })

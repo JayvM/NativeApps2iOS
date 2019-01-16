@@ -55,7 +55,8 @@ class AccountTableViewController: UITableViewController {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         
-        dataController.insertAccount(Account(id: id, name: name, email: email, password: password, checklists: nil))
+        dataController.addAccount(Account(id: id, name: name, email: email, password: password, checklists: nil))
+        dataController.updateData()
     }
     
     //Functions

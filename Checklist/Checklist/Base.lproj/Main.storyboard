@@ -148,7 +148,7 @@
                                 <connections>
                                     <outlet property="itemsCountLabel" destination="sZk-SY-Zzp" id="qSO-O5-su8"/>
                                     <outlet property="nameLabel" destination="Ny4-wd-v1h" id="DEw-Ro-ksY"/>
-                                    <outlet property="sharedWithLabel" destination="k1s-Ca-X2N" id="Z0B-ob-DIj"/>
+                                    <outlet property="sharedAccountsLabel" destination="k1s-Ca-X2N" id="JS9-Xe-sBa"/>
                                     <segue destination="hiK-Wu-SYW" kind="show" identifier="ItemsSegue" id="WKe-3P-Coo"/>
                                 </connections>
                             </tableViewCell>

@@ -6,13 +6,23 @@ class Checklist: Codable {
     
     var name: String
     var items: [Item]
-    var accounts: [Int]
+    var sharedAccounts: [Account]
     
     //Initializer
     
-    init(name: String, items: [Item]?, accounts: [Int]?) {
+    init(name: String, items: [Item]?, sharedAccounts: [Account]?) {
         self.name = name
         self.items = items ?? []
-        self.accounts = accounts ?? []
+        self.sharedAccounts = sharedAccounts ?? []
+    }
+    
+    //Methods
+    
+    func addSharedAccount(_ account: Account) {
+        sharedAccounts.append(account)
+    }
+    
+    func removeSharedAccount(_ index: Int) {
+        sharedAccounts.remove(at: index)
     }
 }

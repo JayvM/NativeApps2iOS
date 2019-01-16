@@ -23,7 +23,7 @@ class Account: Codable {
     //Methods
     
     func addChecklist(_ name: String) {
-        checklists.append(Checklist(name: name, items: nil, accounts: nil))
+        checklists.append(Checklist(name: name, items: nil, sharedAccounts: nil))
     }
     
     func removeChecklist(_ index: Int) {

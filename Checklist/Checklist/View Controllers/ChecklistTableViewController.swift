@@ -4,6 +4,7 @@ class ChecklistTableViewController: UITableViewController {
     
     //Properties
     
+    var dataController: DataController!
     var checklist: Checklist!
     
     //Override functions

@@ -34,7 +34,8 @@ class LoginViewController: UIViewController {
             let navigationController = segue.destination as? UINavigationController
             let checklistsTableViewController = navigationController?.viewControllers.first as! ChecklistsTableViewController
             
-            checklistsTableViewController.dataController = sender as? DataController
+            checklistsTableViewController.dataController = dataController
+            checklistsTableViewController.account = sender as? Account 
         }
         
         if segue.identifier == "AccountSegue" {
@@ -67,8 +68,7 @@ class LoginViewController: UIViewController {
         
         for account in dataController.accounts {
             if account.email == email && account.password == password {
-                dataController.currentAccount = account
-                performSegue(withIdentifier: "ChecklistsSegue", sender: dataController)
+                performSegue(withIdentifier: "ChecklistsSegue", sender: account)
                 return
             }
         }
