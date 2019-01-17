@@ -41,6 +41,19 @@ class ItemsTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ItemSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemSegue" {
+            let itemTableViewController = segue.destination as! ItemTableViewController
+            
+            itemTableViewController.dataController = dataController
+            itemTableViewController.item = checklist.items[tableView.indexPathForSelectedRow!.row]
+        }
+    }
+    
     //Actions
 
     @IBAction func addButtonTapped(_ sender: Any) {

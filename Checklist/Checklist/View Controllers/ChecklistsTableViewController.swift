@@ -59,10 +59,10 @@ class ChecklistsTableViewController: UITableViewController {
         }
         
         if segue.identifier == "ChecklistSegue" {
-            let checklistTableViewController = segue.destination as! ChecklistTableViewController
+            let checklistEditTableViewController = segue.destination as! ChecklistEditTableViewController
             
-            checklistTableViewController.dataController = dataController
-            checklistTableViewController.checklist = sender as? Checklist
+            checklistEditTableViewController.dataController = dataController
+            checklistEditTableViewController.checklist = sender as? Checklist
         }
     }
     

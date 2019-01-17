@@ -90,7 +90,7 @@
         <!--Title-->
         <scene sceneID="d1B-Ty-blh">
             <objects>
-                <tableViewController id="QHu-LJ-92L" customClass="ChecklistTableViewController" customModule="Checklist" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="QHu-LJ-92L" customClass="ChecklistEditTableViewController" customModule="Checklist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NFk-Qu-vhf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -242,16 +242,49 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="ucm-Jd-4FL">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="9Hc-v6-i4u"/>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="TGD-aR-x3C">
                             <connections>
                                 <action selector="addButtonTapped:" destination="hiK-Wu-SYW" id="D8W-I5-p6N"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="way-F9-yid" kind="show" identifier="ItemSegue" id="LNu-TI-OKa"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAG-Nd-qF0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2244" y="55"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="Qj6-ai-HXd">
+            <objects>
+                <tableViewController id="way-F9-yid" customClass="ItemTableViewController" customModule="Checklist" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tJ6-aV-Jz1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OE3-SY-Zac">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OE3-SY-Zac" id="Xye-MQ-Flm">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="way-F9-yid" id="rxS-Oy-6EP"/>
+                            <outlet property="delegate" destination="way-F9-yid" id="WPd-hK-vV5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="62N-Hd-aqE"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ss5-pb-Qe6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3047" y="55"/>
         </scene>
         <!--Create a new account-->
         <scene sceneID="cI9-py-8Ow">

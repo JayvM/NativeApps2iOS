@@ -1,6 +1,6 @@
 import UIKit
 
-class ChecklistTableViewController: UITableViewController {
+class ChecklistEditTableViewController: UITableViewController {
     
     //Properties
     
