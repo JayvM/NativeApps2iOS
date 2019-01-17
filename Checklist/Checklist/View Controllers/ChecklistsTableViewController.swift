@@ -59,7 +59,8 @@ class ChecklistsTableViewController: UITableViewController {
         }
         
         if segue.identifier == "ChecklistEditSegue" {
-            let checklistEditTableViewController = segue.destination as! ChecklistEditTableViewController
+            let navigationController = segue.destination as? UINavigationController
+            let checklistEditTableViewController = navigationController?.viewControllers.first as! ChecklistEditTableViewController
             
             checklistEditTableViewController.dataController = dataController
             checklistEditTableViewController.checklist = sender as? Checklist
@@ -124,6 +125,9 @@ class ChecklistsTableViewController: UITableViewController {
         alert.addAction(save)
         save.isEnabled = false
         self.present(alert, animated: true)
+    }
+    
+    @IBAction func unwindToChecklistsTableViewController(segue: UIStoryboardSegue) {
     }
     
 }

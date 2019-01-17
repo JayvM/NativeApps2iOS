@@ -55,7 +55,8 @@ class ItemsTableViewController: UITableViewController {
         }
         
         if segue.identifier == "ItemEditSegue" {
-            let itemEditTableViewController = segue.destination as! ItemEditTableViewController
+            let navigationController = segue.destination as? UINavigationController
+            let itemEditTableViewController = navigationController?.viewControllers.first as! ItemEditTableViewController
             
             itemEditTableViewController.dataController = dataController
             itemEditTableViewController.item = sender as? Item
@@ -110,6 +111,9 @@ class ItemsTableViewController: UITableViewController {
         alert.addAction(save)
         save.isEnabled = false
         self.present(alert, animated: true)
+    }
+    
+    @IBAction func unwindToItemsTableViewController(segue: UIStoryboardSegue) {
     }
 
 }
