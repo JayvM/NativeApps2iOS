@@ -11,6 +11,7 @@ class ChecklistsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLongPressGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,12 +46,47 @@ class ChecklistsTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ItemsSegue", sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ItemsSegue" {
             let itemsTableViewController = segue.destination as! ItemsTableViewController
             
             itemsTableViewController.dataController = dataController
             itemsTableViewController.checklist = account.checklists[tableView.indexPathForSelectedRow!.row]
+        }
+        
+        if segue.identifier == "ChecklistSegue" {
+            let checklistTableViewController = segue.destination as! ChecklistTableViewController
+            
+            checklistTableViewController.dataController = dataController
+            checklistTableViewController.checklist = sender as? Checklist
+        }
+    }
+    
+    //Functions
+    
+    /*
+     CODE COPIED: How to detect a long press gesture in a table view cell
+     SOURCE: https://stackoverflow.com/questions/30839275/how-to-select-a-table-row-during-a-long-press-in-swift
+     */
+    func setupLongPressGesture() {
+        let longPressGesture: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
+        
+        longPressGesture.minimumPressDuration = 1.0 //One second
+        longPressGesture.delegate = self as? UIGestureRecognizerDelegate
+        tableView.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc func handleLongPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == .began {
+            let touchPoint = longPressGestureRecognizer.location(in: tableView)
+            
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                performSegue(withIdentifier: "ChecklistSegue", sender: account.checklists[indexPath.row])
+            }
         }
     }
 
@@ -60,7 +96,7 @@ class ChecklistsTableViewController: UITableViewController {
      USED AS GUIDANCE: How to use an UIAlertController
      SOURCE: https://learnappmaking.com/uialertcontroller-alerts-swift-how-to/
      
-     USED AS GUIDANCE: How to add an observer on a textfield in an UIAlertController
+     CODE COPIED: How to add an observer on a textfield in an UIAlertController
      SOURCE: https://gist.github.com/TheCodedSelf/c4f3984dd9fcc015b3ab2f9f60f8ad51
      */
     @IBAction func addButtonTapped(_ sender: Any) {

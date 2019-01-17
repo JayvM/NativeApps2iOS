@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
             let navigationController = segue.destination as? UINavigationController
             let accountTableViewController = navigationController?.viewControllers.first as! AccountTableViewController
             
-            accountTableViewController.dataController = sender as? DataController
+            accountTableViewController.dataController = dataController
         }
     }
     
@@ -81,7 +81,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func newAccountButtonTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "AccountSegue", sender: dataController)
+        performSegue(withIdentifier: "AccountSegue", sender: nil)
     }
     
     @IBAction func unwindToLoginViewController(segue: UIStoryboardSegue) {

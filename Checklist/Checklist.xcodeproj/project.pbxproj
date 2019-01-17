@@ -21,6 +21,7 @@
 		F05440C521EA6A7200F22C80 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440C421EA6A7200F22C80 /* AccountTableViewController.swift */; };
 		F05440C821EB712B00F22C80 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05440C721EB712B00F22C80 /* DataController.swift */; };
 		F0F0956221EFA20A00CF244A /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F0956121EFA20A00CF244A /* ItemTableViewCell.swift */; };
+		F0F0956421EFD57300CF244A /* ChecklistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F0956321EFD57200CF244A /* ChecklistTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		F05440C421EA6A7200F22C80 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		F05440C721EB712B00F22C80 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		F0F0956121EFA20A00CF244A /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		F0F0956321EFD57200CF244A /* ChecklistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				F05440BA21EA240A00F22C80 /* ChecklistsTableViewController.swift */,
 				F05440C421EA6A7200F22C80 /* AccountTableViewController.swift */,
 				F01DE56221EE722200034B58 /* ItemsTableViewController.swift */,
+				F0F0956321EFD57200CF244A /* ChecklistTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				F05440C121EA406100F22C80 /* ChecklistTableViewCell.swift in Sources */,
 				F01DE56321EE722200034B58 /* ItemsTableViewController.swift in Sources */,
 				F05440C821EB712B00F22C80 /* DataController.swift in Sources */,
+				F0F0956421EFD57300CF244A /* ChecklistTableViewController.swift in Sources */,
 				F05440BB21EA240A00F22C80 /* ChecklistsTableViewController.swift in Sources */,
 				F05440BF21EA391700F22C80 /* Item.swift in Sources */,
 				F05440C521EA6A7200F22C80 /* AccountTableViewController.swift in Sources */,
