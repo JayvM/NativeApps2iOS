@@ -58,7 +58,7 @@ class ChecklistsTableViewController: UITableViewController {
             itemsTableViewController.checklist = account.checklists[tableView.indexPathForSelectedRow!.row]
         }
         
-        if segue.identifier == "ChecklistSegue" {
+        if segue.identifier == "ChecklistEditSegue" {
             let checklistEditTableViewController = segue.destination as! ChecklistEditTableViewController
             
             checklistEditTableViewController.dataController = dataController
@@ -85,7 +85,7 @@ class ChecklistsTableViewController: UITableViewController {
             let touchPoint = longPressGestureRecognizer.location(in: tableView)
             
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                performSegue(withIdentifier: "ChecklistSegue", sender: account.checklists[indexPath.row])
+                performSegue(withIdentifier: "ChecklistEditSegue", sender: account.checklists[indexPath.row])
             }
         }
     }

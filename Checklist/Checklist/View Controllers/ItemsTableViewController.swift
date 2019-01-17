@@ -11,6 +11,7 @@ class ItemsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLongPressGesture()
         self.navigationItem.title = checklist.name
     }
 
@@ -52,7 +53,35 @@ class ItemsTableViewController: UITableViewController {
             itemTableViewController.dataController = dataController
             itemTableViewController.item = checklist.items[tableView.indexPathForSelectedRow!.row]
         }
+        
+        if segue.identifier == "ItemEditSegue" {
+            let itemEditTableViewController = segue.destination as! ItemEditTableViewController
+            
+            itemEditTableViewController.dataController = dataController
+            itemEditTableViewController.item = sender as? Item
+        }
     }
+    
+    //Functions
+    
+    func setupLongPressGesture() {
+        let longPressGesture: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
+        
+        longPressGesture.minimumPressDuration = 1.0 //One second
+        longPressGesture.delegate = self as? UIGestureRecognizerDelegate
+        tableView.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc func handleLongPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == .began {
+            let touchPoint = longPressGestureRecognizer.location(in: tableView)
+            
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                performSegue(withIdentifier: "ItemEditSegue", sender: checklist.items[indexPath.row])
+            }
+        }
+    }
+
     
     //Actions
 

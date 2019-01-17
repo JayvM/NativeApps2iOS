@@ -116,6 +116,35 @@
             </objects>
             <point key="canvasLocation" x="2244" y="-654"/>
         </scene>
+        <!--Title-->
+        <scene sceneID="tBi-H4-VLa">
+            <objects>
+                <tableViewController id="uAE-Cb-2yC" customClass="ItemEditTableViewController" customModule="Checklist" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="h1d-tG-Ca2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wL2-1B-DYk">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wL2-1B-DYk" id="YWK-Nq-MFU">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="uAE-Cb-2yC" id="SK8-4b-bUM"/>
+                            <outlet property="delegate" destination="uAE-Cb-2yC" id="OY7-yQ-EbT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="edH-9p-pZ1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e49-GX-FJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3046" y="-654"/>
+        </scene>
         <!--My checklists-->
         <scene sceneID="wRK-bR-8F6">
             <objects>
@@ -195,7 +224,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="QHu-LJ-92L" kind="show" identifier="ChecklistSegue" id="psn-Z0-Vhd"/>
+                        <segue destination="QHu-LJ-92L" kind="show" identifier="ChecklistEditSegue" id="psn-Z0-Vhd"/>
                         <segue destination="hiK-Wu-SYW" kind="show" identifier="ItemsSegue" id="z91-5W-BjI"/>
                     </connections>
                 </tableViewController>
@@ -251,6 +280,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="way-F9-yid" kind="show" identifier="ItemSegue" id="LNu-TI-OKa"/>
+                        <segue destination="uAE-Cb-2yC" kind="show" identifier="ItemEditSegue" id="b5Z-9o-7HG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAG-Nd-qF0" userLabel="First Responder" sceneMemberID="firstResponder"/>
