@@ -257,7 +257,11 @@
                                 <segue destination="i1g-44-BjC" kind="unwind" unwindAction="unwindToChecklistsTableViewControllerWithSegue:" id="amj-xA-1a1"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="HOz-8P-rH5"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="HOz-8P-rH5">
+                            <connections>
+                                <segue destination="i1g-44-BjC" kind="unwind" identifier="SaveChecklistUnwind" unwindAction="unwindToChecklistsTableViewControllerWithSegue:" id="oYZ-aL-Foh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mXY-CB-ozK" userLabel="First Responder" sceneMemberID="firstResponder"/>

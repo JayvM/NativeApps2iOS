@@ -6,6 +6,8 @@ class ChecklistsTableViewController: UITableViewController {
     
     var dataController: DataController!
     var account: Account!
+    
+    var selectedRow: IndexPath?
 
     //Override functions
 
@@ -16,7 +18,7 @@ class ChecklistsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        tableView.reloadData() //Reload data when items get changed
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,7 +65,7 @@ class ChecklistsTableViewController: UITableViewController {
             let checklistEditTableViewController = navigationController?.viewControllers.first as! ChecklistEditTableViewController
             
             checklistEditTableViewController.dataController = dataController
-            checklistEditTableViewController.checklist = sender as? Checklist
+            checklistEditTableViewController.checklist = (sender as? Checklist)?.copy()
         }
     }
     
@@ -86,6 +88,7 @@ class ChecklistsTableViewController: UITableViewController {
             let touchPoint = longPressGestureRecognizer.location(in: tableView)
             
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                selectedRow = indexPath
                 performSegue(withIdentifier: "ChecklistEditSegue", sender: account.checklists[indexPath.row])
             }
         }
@@ -128,6 +131,17 @@ class ChecklistsTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToChecklistsTableViewController(segue: UIStoryboardSegue) {
+        guard segue.identifier == "SaveChecklistUnwind" else {
+            return
+        }
+        
+        let checklistEditTableViewController = segue.source as! ChecklistEditTableViewController
+        
+        if let selected = selectedRow {
+            account.checklists[selected.row] = checklistEditTableViewController.checklist
+            dataController.updateData()
+            tableView.reloadRows(at: [selected], with: .none)
+        }
     }
     
 }

@@ -33,4 +33,8 @@ class Checklist: Codable {
     func removeSharedAccount(_ index: Int) {
         sharedAccounts.remove(at: index)
     }
+    
+    func copy() -> Checklist {
+        return Checklist(name: name, items: items, sharedAccounts: sharedAccounts)
+    }
 }

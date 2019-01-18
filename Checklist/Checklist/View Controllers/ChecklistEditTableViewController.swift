@@ -11,7 +11,6 @@ class ChecklistEditTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationItem.title = "Edit " + checklist.name
         
         //BUG: Hide footers
@@ -26,12 +25,12 @@ class ChecklistEditTableViewController: UITableViewController {
         return section == 0 ? 1 : checklist.sharedAccounts.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 44.0 : 64.0
-    }
-    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 64
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 44.0 : 64.0
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {        
@@ -76,40 +75,22 @@ class ChecklistEditTableViewController: UITableViewController {
         return cell
     }
     
-    /*
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return indexPath.section == 0 ? false : true
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            account.removeChecklist(indexPath.row)
-            dataController.updateData()
+        if editingStyle == .delete && indexPath.section == 1 {
+            checklist.removeSharedAccount(indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ItemsSegue", sender: nil)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ItemsSegue" {
-            let itemsTableViewController = segue.destination as! ItemsTableViewController
-            
-            itemsTableViewController.dataController = dataController
-            itemsTableViewController.checklist = account.checklists[tableView.indexPathForSelectedRow!.row]
-        }
-        
-        if segue.identifier == "ChecklistEditSegue" {
-            let navigationController = segue.destination as? UINavigationController
-            let checklistEditTableViewController = navigationController?.viewControllers.first as! ChecklistEditTableViewController
-            
-            checklistEditTableViewController.dataController = dataController
-            checklistEditTableViewController.checklist = sender as? Checklist
+        if let name = (tableView.cellForRow(at: [0, 0]) as! ChecklistNameTableViewCell).nameTextField.text {
+            checklist.name = name
         }
     }
- */
     
     //Functions
     
