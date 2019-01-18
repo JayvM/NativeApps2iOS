@@ -27,6 +27,17 @@ class AccountTableViewController: UITableViewController {
      */
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "SaveAccountUnwind" {
+            let email = emailTextField.text ?? ""
+            
+            if dataController.getAccount(email) != nil {
+                let alert = UIAlertController(title: "Hold on!", message: "The E-mail is already being used.", preferredStyle: .alert)
+                let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: nil)
+                
+                alert.addAction(tryAgain)
+                self.present(alert, animated: true)
+                return false
+            }
+            
             let password = passwordTextField.text ?? ""
             let repeatPassword = repeatPasswordTextField.text ?? ""
             
