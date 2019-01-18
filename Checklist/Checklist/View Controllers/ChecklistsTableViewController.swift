@@ -61,11 +61,16 @@ class ChecklistsTableViewController: UITableViewController {
         }
         
         if segue.identifier == "ChecklistEditSegue" {
-            let navigationController = segue.destination as? UINavigationController
-            let checklistEditTableViewController = navigationController?.viewControllers.first as! ChecklistEditTableViewController
-            
-            checklistEditTableViewController.dataController = dataController
-            checklistEditTableViewController.checklist = (sender as? Checklist)?.copy()
+            if let checklist = sender as? Checklist {
+                let navigationController = segue.destination as? UINavigationController
+                let checklistEditTableViewController = navigationController?.viewControllers.first as! ChecklistEditTableViewController
+                
+                checklistEditTableViewController.dataController = dataController
+                checklistEditTableViewController.checklist = checklist.copy()
+                checklistEditTableViewController.usedChecklistNames = account.checklists.compactMap({ c in
+                    return checklist.name != c.name ? c.name : nil
+                })
+            }
         }
     }
     

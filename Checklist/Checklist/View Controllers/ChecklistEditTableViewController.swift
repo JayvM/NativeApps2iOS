@@ -6,6 +6,7 @@ class ChecklistEditTableViewController: UITableViewController {
     
     var dataController: DataController!
     var checklist: Checklist!
+    var usedChecklistNames: [String]?
 
     //Override functions
     
@@ -86,8 +87,33 @@ class ChecklistEditTableViewController: UITableViewController {
         }
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "SaveChecklistUnwind" {
+            if let names = usedChecklistNames {
+                let indexPath = IndexPath(row: 0, section: 0)
+                let checklistNameTableViewCell = tableView.cellForRow(at: indexPath) as! ChecklistNameTableViewCell
+                
+                for name in names {
+                    if checklistNameTableViewCell.nameTextField.text == name {
+                        let alert = UIAlertController(title: "Hold on!", message: "The checklist name is already being used.", preferredStyle: .alert)
+                        let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: nil)
+                        
+                        alert.addAction(tryAgain)
+                        self.present(alert, animated: true)
+                        return false
+                    }
+                }
+            }
+        }
+        
+        return true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let name = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! ChecklistNameTableViewCell).nameTextField.text {
+        let indexPath = IndexPath(row: 0, section: 0)
+        let checklistNameTableViewCell = tableView.cellForRow(at: indexPath) as! ChecklistNameTableViewCell
+        
+        if let name = checklistNameTableViewCell.nameTextField.text {
             checklist.name = name
         }
     }
