@@ -74,9 +74,9 @@ class LoginViewController: UIViewController {
         }
         
         let alert = UIAlertController(title: "Woops!", message: "The E-mail and/or password are incorrect.", preferredStyle: .alert)
-        let understood = UIAlertAction(title: "Let me try again", style: .default, handler: nil)
+        let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: nil)
         
-        alert.addAction(understood)
+        alert.addAction(tryAgain)
         self.present(alert, animated: true)
     }
 

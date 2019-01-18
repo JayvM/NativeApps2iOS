@@ -87,7 +87,7 @@ class ChecklistEditTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let name = (tableView.cellForRow(at: [0, 0]) as! ChecklistNameTableViewCell).nameTextField.text {
+        if let name = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! ChecklistNameTableViewCell).nameTextField.text {
             checklist.name = name
         }
     }
@@ -95,7 +95,42 @@ class ChecklistEditTableViewController: UITableViewController {
     //Functions
     
     @objc func addButtonTapped() {
-        print("hi")
+        let alert1 = UIAlertController(title: "Add an account to share with", message: nil, preferredStyle: .alert)
+        
+        let save = UIAlertAction(title: "Add", style: .default, handler: { action in
+            if let email = alert1.textFields?.first?.text {
+                let newIndexPath = IndexPath(row: self.checklist.sharedAccounts.count, section: 1)
+                
+                if let account = self.dataController.getAccount(email) {
+                    self.checklist.addSharedAccount(account)
+                    self.dataController.updateData()
+                    self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+                } else {
+                    let alert2 = UIAlertController(title: "Hold on!", message: "The E-mail does not exist in our database.", preferredStyle: .alert)
+                    let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { action in
+                        self.present(alert1, animated: true)
+                    })
+                    
+                    alert2.addAction(tryAgain)
+                    self.present(alert2, animated: true)
+                }
+            }
+        })
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        
+        alert1.addTextField(configurationHandler: { textField in
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: {_ in
+                save.isEnabled = !(textField.text?.isEmpty ?? false)
+            })
+            
+            textField.placeholder = "E-mail"
+        })
+        
+        alert1.addAction(cancel)
+        alert1.addAction(save)
+        save.isEnabled = false
+        self.present(alert1, animated: true)
     }
     
 }

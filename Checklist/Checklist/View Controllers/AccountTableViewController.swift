@@ -32,9 +32,9 @@ class AccountTableViewController: UITableViewController {
             
             if password != repeatPassword {
                 let alert = UIAlertController(title: "Hold on!", message: "The two passwords are not the same.", preferredStyle: .alert)
-                let understood = UIAlertAction(title: "Understood", style: .default, handler: nil)
+                let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: nil)
                 
-                alert.addAction(understood)
+                alert.addAction(tryAgain)
                 self.present(alert, animated: true)
                 return false
             }

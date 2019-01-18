@@ -83,6 +83,16 @@ class DataController {
         accounts.append(account)
     }
     
+    func getAccount(_ email: String) -> Account? {
+        for account in accounts {
+            if account.email == email {
+                return account
+            }
+        }
+        
+        return nil
+    }
+    
     func updateData() {
         let encodedAccounts = try? PropertyListEncoder().encode(accounts)
         
