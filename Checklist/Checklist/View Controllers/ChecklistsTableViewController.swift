@@ -109,11 +109,24 @@ class ChecklistsTableViewController: UITableViewController {
      SOURCE: https://gist.github.com/TheCodedSelf/c4f3984dd9fcc015b3ab2f9f60f8ad51
      */
     @IBAction func addButtonTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Add a new checklist", message: nil, preferredStyle: .alert)
+        let alert1 = UIAlertController(title: "Add a new checklist", message: nil, preferredStyle: .alert)
 
         let save = UIAlertAction(title: "Save", style: .default, handler: { action in
-            if let name = alert.textFields?.first?.text {
+            if let name = alert1.textFields?.first?.text {
                 let newIndexPath = IndexPath(row: self.account.checklists.count, section: 0)
+                
+                for c in self.account.checklists {
+                    if c.name == name {
+                        let alert2 = UIAlertController(title: "Hold on!", message: "This name is already being used.", preferredStyle: .alert)
+                        let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { action in
+                            self.present(alert1, animated: true)
+                        })
+                        
+                        alert2.addAction(tryAgain)
+                        self.present(alert2, animated: true)
+                        return
+                    }
+                }
                 
                 self.account.addChecklist(Checklist(name: name, items: nil, sharedAccounts: nil))
                 self.dataController.updateData()
@@ -121,7 +134,7 @@ class ChecklistsTableViewController: UITableViewController {
             }
         })
         
-        alert.addTextField(configurationHandler: { textField in
+        alert1.addTextField(configurationHandler: { textField in
             NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: {_ in
                 save.isEnabled = !(textField.text?.isEmpty ?? false)
             })
@@ -129,10 +142,10 @@ class ChecklistsTableViewController: UITableViewController {
         
         let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         
-        alert.addAction(cancel)
-        alert.addAction(save)
+        alert1.addAction(cancel)
+        alert1.addAction(save)
         save.isEnabled = false
-        self.present(alert, animated: true)
+        self.present(alert1, animated: true)
     }
     
     @IBAction func unwindToChecklistsTableViewController(segue: UIStoryboardSegue) {
