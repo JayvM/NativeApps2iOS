@@ -55,6 +55,7 @@ class ItemsTableViewController: UITableViewController {
         if segue.identifier == "ItemSegue" {
             let itemViewController = segue.destination as! ItemViewController
             
+            itemViewController.dataController = dataController
             itemViewController.item = checklist.items[tableView.indexPathForSelectedRow!.row]
         }
         
