@@ -48,10 +48,9 @@ class ItemsTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ItemSegue" {
-            let itemTableViewController = segue.destination as! ItemTableViewController
+            let itemViewController = segue.destination as! ItemViewController
             
-            itemTableViewController.dataController = dataController
-            itemTableViewController.item = checklist.items[tableView.indexPathForSelectedRow!.row]
+            itemViewController.item = checklist.items[tableView.indexPathForSelectedRow!.row]
         }
         
         if segue.identifier == "ItemEditSegue" {
