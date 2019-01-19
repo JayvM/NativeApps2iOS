@@ -61,12 +61,11 @@ class AccountTableViewController: UITableViewController {
             return
         }
 
-        let id = dataController.getID()
         let name = nameTextField.text ?? ""
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         
-        dataController.addAccount(Account(id: id, name: name, email: email, password: password, checklists: nil))
+        dataController.addAccount(Account(name: name, email: email, password: password, checklists: nil))
         dataController.updateData()
     }
     

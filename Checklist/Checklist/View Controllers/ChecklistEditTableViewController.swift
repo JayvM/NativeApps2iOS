@@ -89,10 +89,19 @@ class ChecklistEditTableViewController: UITableViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "SaveChecklistUnwind" {
-            if let names = usedChecklistNames {
-                let indexPath = IndexPath(row: 0, section: 0)
-                let checklistNameTableViewCell = tableView.cellForRow(at: indexPath) as! ChecklistNameTableViewCell
+            let indexPath = IndexPath(row: 0, section: 0)
+            let checklistNameTableViewCell = tableView.cellForRow(at: indexPath) as! ChecklistNameTableViewCell
+            
+            if checklistNameTableViewCell.nameTextField.text?.isEmpty ?? false {
+                let alert = UIAlertController(title: "Hold on!", message: "The checklist name is empty.", preferredStyle: .alert)
+                let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: nil)
                 
+                alert.addAction(tryAgain)
+                self.present(alert, animated: true)
+                return false
+            }
+            
+            if let names = usedChecklistNames {
                 for name in names {
                     if checklistNameTableViewCell.nameTextField.text == name {
                         let alert = UIAlertController(title: "Hold on!", message: "The checklist name is already being used.", preferredStyle: .alert)

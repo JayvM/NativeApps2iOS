@@ -4,7 +4,6 @@ class Account: Codable {
     
     //Properties
     
-    let id: Int
     var name: String
     var email: String
     var password: String
@@ -12,8 +11,7 @@ class Account: Codable {
 
     //Initializer
     
-    init(id: Int, name: String, email: String, password: String, checklists: [Checklist]?) {
-        self.id = id
+    init(name: String, email: String, password: String, checklists: [Checklist]?) {
         self.name = name
         self.email = email
         self.password = password

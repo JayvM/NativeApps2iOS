@@ -1,42 +1,53 @@
 import Foundation
+import UIKit
 
 /*
-    Simulator device location
-    Finder: Ga > Ga naar map > ~/Library/Developer/CoreSimulator/Devices/
- 
-    https://stackoverflow.com/questions/47950238/where-is-my-app-document-folder-in-xcode-9-simulator/47950275
- 
-    Resetting the simulator
-    Simulator: Hardwarde > Erase all content and settings
+ Resetting the simulator
+ Simulator: Hardwarde > Erase all content and settings
+*/
+
+/*
+ USED AS GUIDANCE: How to save and load UIImages to and from a directory
+ SOURCE: https://medium.com/@Dougly/persisting-image-data-locally-swift-3-8bae72673f8a
+ SOURCE: https://stackoverflow.com/questions/26931355/how-to-create-directory-using-swift-code-nsfilemanager
+ SOURCE: https://forums.developer.apple.com/thread/68533
 */
 
 class DataController {
     
     //Properties
-
+    
+    let dataDirectory: URL
+    let imagesDirectory: URL
+    
     var accounts: [Account]
-    
-    //Static properties
-    
-    static var directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let directoryURL = directory.appendingPathComponent("data").appendingPathExtension("plist")
     
     //Initializer
     
     init() {
-        if let encodedAccounts = try? Data(contentsOf: DataController.directoryURL), let accounts = try? PropertyListDecoder().decode([Account].self, from: encodedAccounts) {
+        let fileManager = FileManager.default
+        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        dataDirectory = documentsDirectory.appendingPathComponent("data").appendingPathExtension("plist")
+        imagesDirectory = documentsDirectory.appendingPathComponent("images")
+
+        print(documentsDirectory.absoluteString)
+        
+        //Accounts
+        
+        if let encodedAccounts = try? Data(contentsOf: dataDirectory), let accounts = try? PropertyListDecoder().decode([Account].self, from: encodedAccounts) {
             self.accounts = accounts
         } else {
             //Test data
-            let account1 = Account(id: 2, name: "Eric", email: "eric@mail.com", password: "pw", checklists: nil)
-            let account2 = Account(id: 3, name: "Patsy", email: "patsy@mail.com", password: "pw", checklists: nil)
+            let account1 = Account(name: "Eric", email: "eric@mail.com", password: "pw", checklists: nil)
+            let account2 = Account(name: "Patsy", email: "patsy@mail.com", password: "pw", checklists: nil)
             
-            let item1 = Item(name: "Bread")
-            let item2 = Item(name: "Potatoes")
-            let item3 = Item(name: "Chocolate")
-            let item4 = Item(name: "Food")
-            let item5 = Item(name: "Drinks")
-            let item6 = Item(name: "Games")
+            let item1 = Item(name: "Bread", imageId: nil, note: nil)
+            let item2 = Item(name: "Potatoes", imageId: nil, note: nil)
+            let item3 = Item(name: "Chocolate", imageId: nil, note: nil)
+            let item4 = Item(name: "Food", imageId: nil, note: nil)
+            let item5 = Item(name: "Drinks", imageId: nil, note: nil)
+            let item6 = Item(name: "Games", imageId: nil, note: nil)
             
             let items1 = [item1, item2, item3]
             let items2 = [item4, item5, item6]
@@ -49,35 +60,25 @@ class DataController {
             
             let checklists1 = [checklist1, checklist2, checklist3]
             
-            let account3 = Account(id: 1, name: "Jay", email: "jay@mail.com", password: "pw", checklists: checklists1)
+            let account3 = Account(name: "Jay", email: "jay@mail.com", password: "pw", checklists: checklists1)
             
             let accounts = [account1, account2, account3]
             
             self.accounts = accounts
         }
-    }
-    
-    //Methods
-    
-    func getID() -> Int {
-        var id: Int
         
-        repeat {
-            id = Int.random(in: 1...4)
-        } while (!doesIdAlreadyExist(id))
+        //Images
         
-        return id
-    }
-    
-    func doesIdAlreadyExist(_ id: Int) -> Bool {
-        for account in accounts {
-            if account.id == id {
-                return true
+        if !fileManager.fileExists(atPath: imagesDirectory.path) {
+            do {
+                try fileManager.createDirectory(at: imagesDirectory, withIntermediateDirectories: false, attributes: nil)
+            } catch {
+                print("ERROR: Could not create a directory!")
             }
         }
-        
-        return false
     }
+    
+    //Methods (accounts)
     
     func addAccount(_ account: Account) {
         accounts.append(account)
@@ -96,20 +97,51 @@ class DataController {
     func updateData() {
         let encodedAccounts = try? PropertyListEncoder().encode(accounts)
         
-        try? encodedAccounts?.write(to: DataController.directoryURL, options: .noFileProtection)
+        try? encodedAccounts?.write(to: dataDirectory, options: .noFileProtection)
     }
     
-    func printData() {
+    //Methods (images)
+    
+    func createImageId() -> Int {
+        var id: Int
+        
+        repeat {
+            id = Int.random(in: 1...100)
+            print(id)
+        } while (doesImageIdAlreadyExist(id))
+        
+        return id
+    }
+    
+    func doesImageIdAlreadyExist(_ id: Int) -> Bool {
         for account in accounts {
-            print(account.name)
-            
             for checklist in account.checklists {
-                print("\t" + checklist.name)
-                
-                for account in checklist.sharedAccounts {
-                    print("\t\t" + account.name)
+                for item in checklist.items {
+                    if item.imageId == id {
+                        return true
+                    }
                 }
             }
         }
+        
+        return false
+    }
+    
+    func writeImage(_ id: Int, _ image: UIImage) {
+        do {
+            if let file = image.jpegData(compressionQuality: 1) {
+                let directory = imagesDirectory.appendingPathComponent(String(id)).appendingPathExtension("jpg")
+                
+                try file.write(to: directory, options: .noFileProtection)
+            }
+        } catch {
+            print("ERROR: Could not write the images!")
+        }
+    }
+    
+    func getImage(_ id: Int) -> UIImage? {
+        let directory = imagesDirectory.appendingPathComponent(String(id)).appendingPathExtension("jpg")
+        
+        return UIImage(contentsOfFile: directory.path)
     }
 }

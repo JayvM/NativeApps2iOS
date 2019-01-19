@@ -14,6 +14,11 @@ class ItemsTableViewController: UITableViewController {
         setupLongPressGesture()
         self.navigationItem.title = checklist.name
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -57,8 +62,13 @@ class ItemsTableViewController: UITableViewController {
             let navigationController = segue.destination as? UINavigationController
             let itemEditTableViewController = navigationController?.viewControllers.first as! ItemEditTableViewController
             
+            let item = sender as! Item
+            
             itemEditTableViewController.dataController = dataController
-            itemEditTableViewController.item = sender as? Item
+            itemEditTableViewController.item = item
+            itemEditTableViewController.usedItemNames = checklist.items.compactMap({ i in
+                return item.name != i.name ? i.name : nil
+            })
         }
     }
     
@@ -81,7 +91,6 @@ class ItemsTableViewController: UITableViewController {
             }
         }
     }
-
     
     //Actions
 
@@ -105,7 +114,7 @@ class ItemsTableViewController: UITableViewController {
                     }
                 }
                 
-                self.checklist.addItem(Item(name: name))
+                self.checklist.addItem(Item(name: name, imageId: nil, note: nil))
                 self.dataController.updateData()
                 self.tableView.insertRows(at: [newIndexPath], with: .automatic)
             }

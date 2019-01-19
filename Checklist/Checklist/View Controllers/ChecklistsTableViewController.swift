@@ -18,7 +18,7 @@ class ChecklistsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData() //Reload data when items get changed
+        tableView.reloadData()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
