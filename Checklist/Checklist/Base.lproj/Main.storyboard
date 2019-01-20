@@ -18,12 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checklist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gs3-u2-cJk">
-                                <rect key="frame" x="135" y="84" width="105" height="31.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="WMD-Il-QIR">
                                 <rect key="frame" x="32" y="272.5" width="311" height="122"/>
                                 <subviews>
@@ -62,6 +56,19 @@
                                     <segue destination="Cdb-kj-FYy" kind="show" identifier="AccountSegue" id="2Rg-1q-2Ru"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="wnv-tt-dLx">
+                                <rect key="frame" x="162.5" y="84" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="CQL-38-pOg"/>
+                                    <constraint firstAttribute="width" constant="50" id="lVe-54-gaw"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checklist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gs3-u2-cJk">
+                                <rect key="frame" x="135" y="138" width="105" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -69,7 +76,9 @@
                             <constraint firstItem="gs3-u2-cJk" firstAttribute="centerX" secondItem="8jd-zB-vDL" secondAttribute="centerX" id="GaE-gb-nz0"/>
                             <constraint firstItem="eoJ-MC-6zB" firstAttribute="bottom" secondItem="Pqz-97-0cO" secondAttribute="bottom" constant="32" id="IKh-BX-vAm"/>
                             <constraint firstItem="WMD-Il-QIR" firstAttribute="centerY" secondItem="8jd-zB-vDL" secondAttribute="centerY" id="K0R-T2-4eJ"/>
-                            <constraint firstItem="gs3-u2-cJk" firstAttribute="top" secondItem="eoJ-MC-6zB" secondAttribute="top" constant="64" id="mvv-kh-Yg8"/>
+                            <constraint firstItem="gs3-u2-cJk" firstAttribute="top" secondItem="wnv-tt-dLx" secondAttribute="bottom" constant="4" id="LGh-MV-cE4"/>
+                            <constraint firstItem="wnv-tt-dLx" firstAttribute="centerX" secondItem="8jd-zB-vDL" secondAttribute="centerX" id="RfT-m0-tHz"/>
+                            <constraint firstItem="wnv-tt-dLx" firstAttribute="top" secondItem="eoJ-MC-6zB" secondAttribute="top" constant="64" id="bHL-gL-huC"/>
                             <constraint firstItem="WMD-Il-QIR" firstAttribute="leading" secondItem="eoJ-MC-6zB" secondAttribute="leading" constant="32" id="orN-0m-ahG"/>
                             <constraint firstItem="Pqz-97-0cO" firstAttribute="centerX" secondItem="8jd-zB-vDL" secondAttribute="centerX" id="uBt-qV-yKG"/>
                         </constraints>
@@ -739,4 +748,7 @@
             <point key="canvasLocation" x="650" y="56"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="180" height="180"/>
+    </resources>
 </document>
