@@ -87,17 +87,17 @@
             </objects>
             <point key="canvasLocation" x="-137" y="55"/>
         </scene>
-        <!--My checklists-->
+        <!--Title-->
         <scene sceneID="wRK-bR-8F6">
             <objects>
                 <tableViewController id="hyh-fk-NPv" customClass="ChecklistsTableViewController" customModule="Checklist" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QLd-nb-Wbs">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="QLd-nb-Wbs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChecklistCell" rowHeight="64" id="Ydh-hN-frF" customClass="ChecklistTableViewCell" customModule="Checklist" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ydh-hN-frF" id="V1n-ai-flj">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
@@ -157,7 +157,7 @@
                             <outlet property="delegate" destination="hyh-fk-NPv" id="e8V-5M-uuv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My checklists" id="1oZ-GQ-RX1">
+                    <navigationItem key="navigationItem" title="Title" id="1oZ-GQ-RX1">
                         <barButtonItem key="backBarButtonItem" title="Back" id="15D-HN-SYT"/>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="wVX-kY-nDs">
                             <connections>

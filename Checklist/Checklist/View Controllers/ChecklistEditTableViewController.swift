@@ -138,7 +138,6 @@ class ChecklistEditTableViewController: UITableViewController {
                 
                 if let account = self.dataController.getAccount(email) {
                     self.checklist.addSharedAccount(account)
-                    self.dataController.updateData()
                     self.tableView.insertRows(at: [newIndexPath], with: .automatic)
                 } else {
                     let alert2 = UIAlertController(title: "Hold on!", message: "The E-mail does not exist in our database.", preferredStyle: .alert)

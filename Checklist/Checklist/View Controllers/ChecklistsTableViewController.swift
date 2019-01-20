@@ -6,6 +6,7 @@ class ChecklistsTableViewController: UITableViewController {
     
     var dataController: DataController!
     var account: Account!
+    var sharedChecklists: [[Any]]!
     
     var selectedRow: IndexPath?
 
@@ -14,6 +15,7 @@ class ChecklistsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLongPressGesture()
+        self.navigationItem.title = "Welcome, " + account.name + "!"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -22,22 +24,32 @@ class ChecklistsTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
-
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 0 ? "My checklists" : "Checklists shared with me"
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? account.checklists.count : 0
+        return section == 0 ? account.checklists.count : sharedChecklists.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistCell", for: indexPath) as! ChecklistTableViewCell
-        
-        cell.set(checklist: account.checklists[indexPath.row])
+
+        if indexPath.section == 0 {
+            cell.set(account.checklists[indexPath.row])
+        } else {
+            let checklist = sharedChecklists[indexPath.row]
+            cell.setSharedChecklist(account, checklist[0] as! String, checklist[1] as! Checklist)
+        }
+   
         return cell
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return indexPath.section == 0 ? true : false
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -55,9 +67,10 @@ class ChecklistsTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ItemsSegue" {
             let itemsTableViewController = segue.destination as! ItemsTableViewController
+            let indexPath = tableView.indexPathForSelectedRow!
             
             itemsTableViewController.dataController = dataController
-            itemsTableViewController.checklist = account.checklists[tableView.indexPathForSelectedRow!.row]
+            itemsTableViewController.checklist = indexPath.section == 0 ? account.checklists[indexPath.row] : sharedChecklists[indexPath.row][1] as! Checklist
         }
         
         if segue.identifier == "ChecklistEditSegue" {
@@ -93,8 +106,10 @@ class ChecklistsTableViewController: UITableViewController {
             let touchPoint = longPressGestureRecognizer.location(in: tableView)
             
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                selectedRow = indexPath
-                performSegue(withIdentifier: "ChecklistEditSegue", sender: account.checklists[indexPath.row])
+                if indexPath.section == 0 {
+                    selectedRow = indexPath
+                    performSegue(withIdentifier: "ChecklistEditSegue", sender: account.checklists[indexPath.row])
+                }
             }
         }
     }

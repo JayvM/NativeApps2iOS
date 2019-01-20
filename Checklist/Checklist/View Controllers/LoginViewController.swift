@@ -34,8 +34,24 @@ class LoginViewController: UIViewController {
             let navigationController = segue.destination as? UINavigationController
             let checklistsTableViewController = navigationController?.viewControllers.first as! ChecklistsTableViewController
             
+            let mainAccount = sender as! Account
+            var checklists: [[Any]] = []
+            
+            for account in dataController.accounts {
+                if account.email != mainAccount.email {
+                    for checklist in account.checklists {
+                        for sharedAccount in checklist.sharedAccounts {
+                            if sharedAccount.email == mainAccount.email {
+                                checklists.append([account.name, checklist])
+                            }
+                        }
+                    }
+                }
+            }
+            
             checklistsTableViewController.dataController = dataController
-            checklistsTableViewController.account = sender as? Account 
+            checklistsTableViewController.account = mainAccount
+            checklistsTableViewController.sharedChecklists = checklists
         }
         
         if segue.identifier == "AccountSegue" {
