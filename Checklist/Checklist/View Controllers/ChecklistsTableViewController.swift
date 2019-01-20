@@ -79,6 +79,7 @@ class ChecklistsTableViewController: UITableViewController {
                 let checklistEditTableViewController = navigationController?.viewControllers.first as! ChecklistEditTableViewController
                 
                 checklistEditTableViewController.dataController = dataController
+                checklistEditTableViewController.accountEmail = account.email
                 checklistEditTableViewController.checklist = checklist.copy()
                 checklistEditTableViewController.usedChecklistNames = account.checklists.compactMap({ c in
                     return checklist.name != c.name ? c.name : nil

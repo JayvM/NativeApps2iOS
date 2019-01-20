@@ -5,6 +5,7 @@ class ChecklistEditTableViewController: UITableViewController {
     //Properties
     
     var dataController: DataController!
+    var accountEmail: String!
     var checklist: Checklist!
     var usedChecklistNames: [String]?
 
@@ -134,13 +135,33 @@ class ChecklistEditTableViewController: UITableViewController {
         
         let save = UIAlertAction(title: "Add", style: .default, handler: { action in
             if let email = alert1.textFields?.first?.text {
-                let newIndexPath = IndexPath(row: self.checklist.sharedAccounts.count, section: 1)
-                
-                if let account = self.dataController.getAccount(email) {
-                    self.checklist.addSharedAccount(account)
-                    self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+                if email != self.accountEmail {
+                    if let account = self.dataController.getAccount(email) {
+                        if !self.checklist.sharedAccounts.contains(where: { $0.email == account.email }) {
+                            let newIndexPath = IndexPath(row: self.checklist.sharedAccounts.count, section: 1)
+                            
+                            self.checklist.addSharedAccount(account)
+                            self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+                        } else {
+                            let alert2 = UIAlertController(title: "Hold on!", message: "This E-mail has already been added.", preferredStyle: .alert)
+                            let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { action in
+                                self.present(alert1, animated: true)
+                            })
+                            
+                            alert2.addAction(tryAgain)
+                            self.present(alert2, animated: true)
+                        }
+                    } else {
+                        let alert2 = UIAlertController(title: "Hold on!", message: "This E-mail does not exist in our database.", preferredStyle: .alert)
+                        let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { action in
+                            self.present(alert1, animated: true)
+                        })
+                        
+                        alert2.addAction(tryAgain)
+                        self.present(alert2, animated: true)
+                    }
                 } else {
-                    let alert2 = UIAlertController(title: "Hold on!", message: "The E-mail does not exist in our database.", preferredStyle: .alert)
+                    let alert2 = UIAlertController(title: "Hold on!", message: "You can't add yourself!", preferredStyle: .alert)
                     let tryAgain = UIAlertAction(title: "Try again", style: .default, handler: { action in
                         self.present(alert1, animated: true)
                     })
