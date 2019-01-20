@@ -7,6 +7,7 @@ class Item: Codable {
     var name: String
     var imageId: Int?
     var note: String?
+    var checked: Bool
     
     //Initializer
     
@@ -14,5 +15,6 @@ class Item: Codable {
         self.name = name
         self.imageId = imageId
         self.note = note
+        self.checked = false
     }
 }

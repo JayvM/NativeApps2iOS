@@ -1,6 +1,6 @@
 import UIKit
 
-class ItemsTableViewController: UITableViewController {
+class ItemsTableViewController: UITableViewController, ItemTableViewCellDelegate {
     
     //Properties
     
@@ -31,6 +31,7 @@ class ItemsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
         
+        cell.delegate = self
         cell.set(checklist.items[indexPath.row])
         return cell
     }
@@ -90,6 +91,16 @@ class ItemsTableViewController: UITableViewController {
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 performSegue(withIdentifier: "ItemEditSegue", sender: checklist.items[indexPath.row])
             }
+        }
+    }
+    
+    func checkedButtonTapped(sender: ItemTableViewCell) {
+        if let indexPath = tableView.indexPath(for: sender) {
+            let item = checklist.items[indexPath.row]
+            
+            item.checked = !item.checked
+            dataController.updateData()
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
     
