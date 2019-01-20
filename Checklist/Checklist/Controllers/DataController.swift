@@ -19,8 +19,10 @@ class DataController {
     
     let dataDirectory: URL
     let imagesDirectory: URL
+    let sessionDirectory: URL
     
     var accounts: [Account]
+    var session: Account?
     
     //Initializer
     
@@ -30,6 +32,7 @@ class DataController {
         
         dataDirectory = documentsDirectory.appendingPathComponent("data").appendingPathExtension("plist")
         imagesDirectory = documentsDirectory.appendingPathComponent("images")
+        sessionDirectory = documentsDirectory.appendingPathComponent("session").appendingPathExtension("plist")
 
         print(documentsDirectory.absoluteString)
         
@@ -75,6 +78,12 @@ class DataController {
             } catch {
                 print("ERROR: Could not create a directory!")
             }
+        }
+        
+        //Session
+  
+        if let encodedSession = try? Data(contentsOf: sessionDirectory), let session = try? PropertyListDecoder().decode(Account.self, from: encodedSession) {
+            self.session = session
         }
     }
     
@@ -143,5 +152,18 @@ class DataController {
         let directory = imagesDirectory.appendingPathComponent(String(id)).appendingPathExtension("jpg")
         
         return UIImage(contentsOfFile: directory.path)
+    }
+    
+    //Methods (sessions)
+    
+    func writeSession(_ session: Account) {
+        let encodedSession = try? PropertyListEncoder().encode(session)
+        
+        try? encodedSession?.write(to: sessionDirectory, options: .noFileProtection)
+    }
+    
+    func removeSession() {
+        try? FileManager.default.removeItem(at: sessionDirectory)
+        session = nil
     }
 }

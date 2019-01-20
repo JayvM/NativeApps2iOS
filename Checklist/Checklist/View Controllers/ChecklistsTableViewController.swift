@@ -86,6 +86,10 @@ class ChecklistsTableViewController: UITableViewController {
                 })
             }
         }
+        
+        if segue.identifier == "LogoutSegue" {
+            dataController.removeSession()
+        }
     }
     
     //Functions
@@ -177,5 +181,4 @@ class ChecklistsTableViewController: UITableViewController {
             tableView.reloadRows(at: [selected], with: .none)
         }
     }
-    
 }

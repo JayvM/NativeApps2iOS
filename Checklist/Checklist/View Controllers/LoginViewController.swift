@@ -17,12 +17,13 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Temporary
-        emailTextField.text = "jay@mail.com"
-        passwordTextField.text = "pw"
-        
         updateLoginButton()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let session = dataController.session {
+            self.performSegue(withIdentifier: "ChecklistsSegue", sender: session)
+        }
     }
     
     /*
@@ -33,7 +34,6 @@ class LoginViewController: UIViewController {
         if segue.identifier == "ChecklistsSegue" {
             let navigationController = segue.destination as? UINavigationController
             let checklistsTableViewController = navigationController?.viewControllers.first as! ChecklistsTableViewController
-            
             let mainAccount = sender as! Account
             var checklists: [[Any]] = []
             
@@ -84,6 +84,7 @@ class LoginViewController: UIViewController {
         
         for account in dataController.accounts {
             if account.email == email && account.password == password {
+                dataController.writeSession(account)
                 performSegue(withIdentifier: "ChecklistsSegue", sender: account)
                 return
             }
